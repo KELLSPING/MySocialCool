@@ -18,3 +18,7 @@ https://www.youtube.com/playlist?list=PLddLA9QpG2T2__tPfi6nwaL8Rf_wWQaz7
 
 ## cmd
 - npm init -y
+- npm install react-scripts react react-dom
+  - react : "18.2.0"
+  - react-dom : "18.2.0"
+  - react-scripts : "5.0.1"
