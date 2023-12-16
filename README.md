@@ -15,3 +15,6 @@ https://www.youtube.com/playlist?list=PLddLA9QpG2T2__tPfi6nwaL8Rf_wWQaz7
   - Hosting : 網站部屬
   - Extensions : 留言通知(Email)、文章搜尋(Algoliz)
 - Semantic UI React
+
+## cmd
+- npm init -y

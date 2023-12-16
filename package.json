@@ -1,0 +1,12 @@
+{
+  "name": "social-cool",
+  "version": "1.0.0",
+  "description": "https://www.youtube.com/playlist?list=PLddLA9QpG2T2__tPfi6nwaL8Rf_wWQaz7",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
