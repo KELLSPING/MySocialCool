@@ -1,7 +1,9 @@
 # Learn Social-cool app
 
 ## Learning Resource
-https://www.youtube.com/playlist?list=PLddLA9QpG2T2__tPfi6nwaL8Rf_wWQaz7
+- https://www.youtube.com/playlist?list=PLddLA9QpG2T2__tPfi6nwaL8Rf_wWQaz7
+- https://react.dev/
+    1. https://react.dev/learn
 
 ## Dev tools
 - VSCode
@@ -15,10 +17,23 @@ https://www.youtube.com/playlist?list=PLddLA9QpG2T2__tPfi6nwaL8Rf_wWQaz7
   - Hosting : 網站部屬
   - Extensions : 留言通知(Email)、文章搜尋(Algoliz)
 - Semantic UI React
+- JSX
 
 ## cmd
-- npm init -y
-- npm install react-scripts react react-dom
+- $ npm init -y
+- $ npm install react-scripts react react-dom
   - react : "18.2.0"
   - react-dom : "18.2.0"
   - react-scripts : "5.0.1"
+- $ npm start
+  - "start": "react-scripts start"
+
+## Notes
+- React 是單頁式應用程式（single-page application, SPA），只會有一個 html 檔案。
+- React.Component
+
+## Others
+- 快速建立新的 React 專案的命令
+    1. npx create-react-app my-react-app
+    2. cd my-react-app
+    3. npm start
