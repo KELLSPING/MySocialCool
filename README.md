@@ -28,6 +28,7 @@
 - $ npm start
   - "start": "react-scripts start"
   - 有即時監聽的功能
+- $ npm install semantic-ui-react semantic-ui-css react-router-dom
 
 ## Notes
 - React 是單頁式應用程式（single-page application, SPA），只會有一個 html 檔案。
