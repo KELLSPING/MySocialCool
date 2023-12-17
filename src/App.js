@@ -1,5 +1,7 @@
+import Header from "./Header";
+
 function App() {
-    return "Social Cool"
+    return <Header />
 }
 
 export default App;
