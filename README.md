@@ -34,6 +34,11 @@
 - React 是單頁式應用程式（single-page application, SPA），只會有一個 html 檔案。
 - React.Component
 - 須在 App.js 中使用 BrowserRouter 元件 ，之後才能在 Header.js 中使用 Link 元件。
+- Code formatting in VSCode
+  1. Windows : Shift + Alt + F
+  2. Linux : Ctrl + Shift + I
+  3. Mac : Shift + Option + F
+- In react-router-dom v6, "Switch" is replaced by routes "Routes". 
 
 ## Others
 - 快速建立新的 React 專案的命令
