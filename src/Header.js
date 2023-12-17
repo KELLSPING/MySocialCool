@@ -11,7 +11,9 @@ function Header() {
             <Search></Search>
         </Menu.Item>
         <Menu.Menu position="right">
-            <Menu.Item>註冊/登入</Menu.Item>
+            <Menu.Item as={Link} to="/signin">
+                註冊/登入
+            </Menu.Item>
         </Menu.Menu>
     </Menu>
 }
