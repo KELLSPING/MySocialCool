@@ -1,8 +1,12 @@
 import { Menu, Search } from "semantic-ui-react";
 
+import { Link } from "react-router-dom";
+
 function Header() {
     return <Menu>
-        <Menu.Item>Social Cool</Menu.Item>
+        <Menu.Item as={Link} to="/">
+            Social Cool
+        </Menu.Item>
         <Menu.Item>
             <Search></Search>
         </Menu.Item>

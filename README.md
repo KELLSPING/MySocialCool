@@ -33,6 +33,7 @@
 ## Notes
 - React 是單頁式應用程式（single-page application, SPA），只會有一個 html 檔案。
 - React.Component
+- 須在 App.js 中使用 BrowserRouter 元件 ，之後才能在 Header.js 中使用 Link 元件。
 
 ## Others
 - 快速建立新的 React 專案的命令
