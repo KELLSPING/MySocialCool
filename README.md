@@ -27,6 +27,7 @@
   - react-scripts : "5.0.1"
 - $ npm start
   - "start": "react-scripts start"
+  - 有即時監聽的功能
 
 ## Notes
 - React 是單頁式應用程式（single-page application, SPA），只會有一個 html 檔案。
