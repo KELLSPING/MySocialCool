@@ -3,6 +3,8 @@ import { Menu, Form, Container } from "semantic-ui-react";
 
 function SignIn() {
   const [activeItem, setActiveItem] = React.useState("signin");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   return (
     <Container>
@@ -21,11 +23,22 @@ function SignIn() {
         </Menu.Item>
       </Menu>
       <Form>
-        <Form.Input label="信箱" value="" placeholder="請輸入信箱" />
-        <Form.Input label="密碼" value="" placeholder="請輸入密碼" />
+        <Form.Input
+          label="信箱"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="請輸入信箱"
+        />
+        <Form.Input
+          label="密碼"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="請輸入密碼"
+          type="password"
+        />
         <Form.Button>
-            {activeItem === 'register' && '註冊'}
-            {activeItem === 'signin' && '登入'}
+          {activeItem === "register" && "註冊"}
+          {activeItem === "signin" && "登入"}
         </Form.Button>
       </Form>
     </Container>
