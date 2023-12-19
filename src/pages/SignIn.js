@@ -16,8 +16,11 @@ function SignIn() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
 
   function onSubmit() {
+    setIsLoading(true);
+
     if (activeItem === "register") {
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, email, password)
@@ -26,6 +29,7 @@ function SignIn() {
           const user = userCredential.user;
           // ...
           navigate("/");
+          setIsLoading(false);
         })
         .catch((error) => {
           //const errorCode = error.code;
@@ -44,6 +48,7 @@ function SignIn() {
             default:
               break;
           }
+          setIsLoading(true);
         });
     } else if (activeItem === "signin") {
       const auth = getAuth();
@@ -53,6 +58,7 @@ function SignIn() {
           const user = userCredential.user;
           // ...
           navigate("/");
+          setIsLoading(true);
         })
         .catch((error) => {
           //const errorCode = error.code;
@@ -71,6 +77,7 @@ function SignIn() {
             default:
               break;
           }
+          setIsLoading(true);
         });
     }
   }
@@ -112,7 +119,7 @@ function SignIn() {
           type="password"
         />
         {errorMessage && <Message negative>{errorMessage}</Message>}
-        <Form.Button>
+        <Form.Button loading={isLoading}>
           {activeItem === "register" && "註冊"}
           {activeItem === "signin" && "登入"}
         </Form.Button>
