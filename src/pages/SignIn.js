@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Form, Container } from "semantic-ui-react";
+import { Menu, Form, Container, Message } from "semantic-ui-react";
 
 import firebase from "../utils/firebase";
 import {
@@ -15,6 +15,7 @@ function SignIn() {
   const [activeItem, setActiveItem] = React.useState("signin");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
 
   function onSubmit() {
     if (activeItem === "register") {
@@ -27,9 +28,17 @@ function SignIn() {
           navigate("/");
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+          //const errorCode = error.code;
+          //const errorMessage = error.message;
           // ..
+          switch (error.code) {
+            case "auth/email-already-in-use":
+              setErrorMessage("信箱已存在");
+              break;
+          
+            default:
+              break;
+          }
         });
     } else if (activeItem === "signin") {
       const auth = getAuth();
@@ -77,6 +86,7 @@ function SignIn() {
           placeholder="請輸入密碼"
           type="password"
         />
+        {errorMessage && <Message negative>{errorMessage}</Message>}
         <Form.Button>
           {activeItem === "register" && "註冊"}
           {activeItem === "signin" && "登入"}
