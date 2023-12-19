@@ -35,7 +35,12 @@ function SignIn() {
             case "auth/email-already-in-use":
               setErrorMessage("信箱已存在");
               break;
-          
+            case "auth/invalid-email":
+              setErrorMessage("信箱格式不正確");
+              break;
+            case "auth/weak-password":
+              setErrorMessage("密碼強度不足");
+              break;
             default:
               break;
           }
@@ -50,8 +55,22 @@ function SignIn() {
           navigate("/");
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+          //const errorCode = error.code;
+          //const errorMessage = error.message;
+          // ..
+          switch (error.code) {
+            case "auth/invalid-email":
+              setErrorMessage("信箱格式不正確");
+              break;
+            case "auth/user-not-found":
+              setErrorMessage("信箱不存在");
+              break;
+            case "auth/wrong-password":
+              setErrorMessage("密碼錯誤");
+              break;
+            default:
+              break;
+          }
         });
     }
   }
