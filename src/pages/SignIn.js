@@ -80,13 +80,19 @@ function SignIn() {
       <Menu widths={2}>
         <Menu.Item
           active={activeItem === "register"}
-          onClick={() => setActiveItem("register")}
+          onClick={() => {
+            setErrorMessage("");
+            setActiveItem("register");
+          }}
         >
           註冊
         </Menu.Item>
         <Menu.Item
           active={activeItem === "signin"}
-          onClick={() => setActiveItem("signin")}
+          onClick={() => {
+            setErrorMessage("");
+            setActiveItem("signin");
+          }}
         >
           登入
         </Menu.Item>
