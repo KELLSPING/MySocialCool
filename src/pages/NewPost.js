@@ -1,7 +1,15 @@
 import React from "react";
 import { Container, Header, Form, Image, Button } from "semantic-ui-react";
 import app from "../utils/firebase";
-import { getFirestore, collection, query, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  query,
+  getDocs,
+  addDoc,
+} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function NewPost() {
   const [title, setTitle] = React.useState("");
@@ -9,6 +17,8 @@ function NewPost() {
   const [topics, setTopics] = React.useState([]);
   const [topicName, setTopicName] = React.useState("");
   const [file, setFile] = React.useState(null);
+
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     async function fetchData() {
@@ -36,10 +46,30 @@ function NewPost() {
     ? URL.createObjectURL(file)
     : "https://react.semantic-ui.com/images/wireframe/image.png";
 
+  async function onSubmit() {
+    const db = getFirestore(app);
+
+    const postsCollection = collection(db, "posts");
+    await addDoc(postsCollection, {
+      title,
+      content,
+      topic: topicName,
+      createdAt: "app.Timestamp.now()",
+      author: {
+        displayName: getAuth().currentUser.displayName || "",
+        photoURL: getAuth().currentUser.photoURL || "",
+        uid: getAuth().currentUser.uid,
+        email: getAuth().currentUser.email,
+      },
+    }).then(() => {
+      navigate("/");
+    });
+  }
+
   return (
     <Container>
       <Header>發表文章</Header>
-      <Form>
+      <Form onSubmit={onSubmit}>
         <Image src={previewUrl} size="small" alt="image" floated="left" />
         <Button basic as="label" htmlFor="post-image">
           上傳文章圖片
