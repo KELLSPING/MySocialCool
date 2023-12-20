@@ -1,15 +1,11 @@
 import React from "react";
 import app from "../utils/firebase";
-import {
-  getFirestore,
-  collection,
-  query,
-  where,
-  getDocs,
-  doc,
-} from "firebase/firestore";
+import { getFirestore, collection, query, getDocs } from "firebase/firestore";
+import { List } from "semantic-ui-react";
 
 function Topics() {
+  const [topics, setTopics] = React.useState([]);
+
   React.useEffect(() => {
     async function fetchData() {
       const db = getFirestore(app);
@@ -20,12 +16,18 @@ function Topics() {
       const data = querySnapshot.docs.map((doc) => {
         return doc.data();
       });
-      console.log(data);
+      setTopics(data);
     }
     fetchData();
   }, []);
 
-  return "Topics";
+  return (
+    <List animated selection>
+      {topics.map((topic) => {
+        return <List.Item key={topic.name}>{topic.name}</List.Item>;
+      })}
+    </List>
+  );
 }
 
 export default Topics;
