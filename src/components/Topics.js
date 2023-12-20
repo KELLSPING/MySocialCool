@@ -1,21 +1,25 @@
 import React from "react";
 import app from "../utils/firebase";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 
 function Topics() {
   React.useEffect(() => {
     async function fetchData() {
       const db = getFirestore(app);
 
-      const docRef = doc(db, "topics", "movie");
-      const docSnap = await getDoc(docRef);
+      const q = query(collection(db, "topics"));
 
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-      } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
-      }
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+      });
     }
     fetchData();
   }, []);
