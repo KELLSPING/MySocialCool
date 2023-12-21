@@ -7,6 +7,7 @@ import {
   query,
   getDocs,
   addDoc,
+  serverTimestamp,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +18,7 @@ function NewPost() {
   const [topics, setTopics] = React.useState([]);
   const [topicName, setTopicName] = React.useState("");
   const [file, setFile] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const navigate = useNavigate();
 
@@ -47,6 +49,8 @@ function NewPost() {
     : "https://react.semantic-ui.com/images/wireframe/image.png";
 
   async function onSubmit() {
+    setIsLoading(true);
+
     const db = getFirestore(app);
 
     const postsCollection = collection(db, "posts");
@@ -54,7 +58,7 @@ function NewPost() {
       title,
       content,
       topic: topicName,
-      createdAt: "app.Timestamp.now()",
+      createdAt: serverTimestamp(),
       author: {
         displayName: getAuth().currentUser.displayName || "",
         photoURL: getAuth().currentUser.photoURL || "",
@@ -62,6 +66,7 @@ function NewPost() {
         email: getAuth().currentUser.email,
       },
     }).then(() => {
+      setIsLoading(false);
       navigate("/");
     });
   }
@@ -97,7 +102,7 @@ function NewPost() {
           value={topicName}
           onChange={(e, { value }) => setTopicName(value)}
         />
-        <Form.Button>送出</Form.Button>
+        <Form.Button loading={isLoading}>送出</Form.Button>
       </Form>
     </Container>
   );
